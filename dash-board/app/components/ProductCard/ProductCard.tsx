@@ -1,10 +1,9 @@
 import React from "react";
 import AddToCart from "../AddToCart";
-import style from "./ProducCard.module.css";
 
 const ProductCard = () => {
   return (
-    <div className={style.card}>
+    <div className="p-5 my-5 bg-sky-400 text-whil text-xl hover:bg-sky-500">
       <AddToCart />
     </div>
   );
