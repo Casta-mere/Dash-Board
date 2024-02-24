@@ -16,7 +16,7 @@ export async function GET(
 // Use patch for updating some properties
 export async function PUT(
   request: NextRequest,
-  { params: { id } }: { params: { id: number } }
+  { params: { id } }: { params: { id: string } }
 ) {
   // Validate the request body
   const body = await request.json();
@@ -25,12 +25,22 @@ export async function PUT(
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
   // Fetch the user
+  const user = await prisma.user.findUnique({
+    where: { id: parseInt(id) },
+  });
   // If does not exist, return 404
-  if (id > 10)
+  if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   // Update the user
+  const updatedUser = await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      name: body.name,
+      email: body.email,
+    },
+  });
   // Return the updated user
-  return NextResponse.json({ id, name: body.name });
+  return NextResponse.json(updatedUser);
 }
 
 export function DELETE(
