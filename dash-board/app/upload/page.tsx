@@ -15,6 +15,9 @@ const UploadPage = () => {
       )}
       <CldUploadWidget
         uploadPreset="bf9xjxfb"
+        options={{
+          sources: ["local"],
+        }}
         onUpload={(result, widget) => {
           if (result.event !== "success") return;
           const info = result.info as CloudinrayResult;
