@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Image from "next/image";
 import RDR2 from "@/public/RDR2.png";
+import { Metadata } from "next";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -18,3 +19,8 @@ export default async function Home() {
     </>
   );
 }
+
+// export const metadata: Metadata = {
+//   title: "Home Page",
+//   description: "...",
+// };

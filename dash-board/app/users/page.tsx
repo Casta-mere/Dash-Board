@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import UserTable from "./UserTable";
 import Link from "next/link";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: { sortOrder: string };
@@ -21,3 +22,11 @@ const UserPage = async ({ searchParams: { sortOrder } }: Props) => {
 };
 
 export default UserPage;
+
+// export async function generateMetada(): Promise<Metadata> {
+//   const metaData = await fetch("");
+//   return {
+//     title: "metaData.title",
+//     description: "...",
+//   };
+// }
