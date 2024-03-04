@@ -1,10 +1,16 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500"] });
+const poppins = localFont({
+  src: "../public/fonts/Poppins-Regular.ttf",
+  variable: "--font-poppings",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="winter">
-      <body className={inter.className}>
+      <body className={poppins.variable}>
         <AuthProvider>
           <NavBar />
           <main className="p-5">{children}</main>
